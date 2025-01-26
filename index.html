@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            overflow: hidden;
+            text-align: center;
+            background: linear-gradient(135deg, #6a11cb, #2575fc, #fbc2eb);
+            background-size: 600% 600%;
+            animation: gradientBackground 15s ease infinite;
+        }
+
+        /* Super Smooth Gradient Animation */
+        @keyframes gradientBackground {
+            0% { background: linear-gradient(135deg, #6a11cb, #2575fc, #fbc2eb); }
+            25% { background: linear-gradient(135deg, #ff6ec7, #ffcd3c, #6a11cb); }
+            50% { background: linear-gradient(135deg, #fbc2eb, #a6c1ee, #6a11cb); }
+            75% { background: linear-gradient(135deg, #00c6ff, #0072ff, #00aaff); }
+            100% { background: linear-gradient(135deg, #3a7bd5, #3a1c71, #d76d77); }
+        }
+
+        .signup-container {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(20px);
+            padding: 40px;
+            border-radius: 25px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            width: 90%;
+            max-width: 500px;
+            transition: all 0.4s ease;
+        }
+
+        .signup-container:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+        }
+
+        h2 {
+            font-size: 36px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            animation: fadeInText 2s ease-out;
+            background: linear-gradient(45deg, #fff, #fbc2eb);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        @keyframes fadeInText {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        .form-input {
+            width: 85%;
+            padding: 15px 20px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .form-input:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 0 15px rgba(106, 17, 203, 0.3);
+            transform: scale(1.02);
+        }
+
+        .form-input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .dashboard-button {
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: #fff;
+            padding: 20px 40px;
+            font-size: 18px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: 0.3s ease;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+            margin: 20px 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .dashboard-button:hover {
+            background: linear-gradient(135deg, #ff6ec7, #ffcd3c);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            transform: scale(1.05);
+        }
+
+        p {
+            font-size: 16px;
+            margin-top: 20px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        a {
+            color: #fbc2eb;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        a:hover {
+            color: #ff6ec7;
+            text-decoration: underline;
+        }
+
+        /* Mobile Friendly */
+        @media (max-width: 768px) {
+            .signup-container {
+                width: 95%;
+                padding: 30px 20px;
+            }
+
+            h2 {
+                font-size: 28px;
+            }
+
+            .form-input {
+                width: 90%;
+                padding: 12px 15px;
+            }
+
+            .dashboard-button {
+                padding: 15px 30px;
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="signup-container">
+        <h2>Create Account</h2>
+        <input type="text" id="signupUsername" class="form-input" placeholder="Username" required>
+        <input type="email" id="signupEmail" class="form-input" placeholder="Email" required>
+        <input type="password" id="signupPassword" class="form-input" placeholder="Password" required>
+        <button class="dashboard-button" onclick="signup()">Sign Up</button>
+        <p>Already have an account? <a href="Rajan1.html">Login</a></p>
+    </div>
+
+    <script>
+        // Smooth Gradient Animation
+        let gradientInterval = setInterval(() => {
+            document.body.style.background = `linear-gradient(135deg, #${Math.floor(Math.random()*16777215).toString(16)}, #${Math.floor(Math.random()*16777215).toString(16)}, #${Math.floor(Math.random()*16777215).toString(16)})`;
+        }, 5000);
+
+        async function signup() {
+            const username = document.getElementById('signupUsername').value;
+            const email = document.getElementById('signupEmail').value;
+            const password = document.getElementById('signupPassword').value;
+
+            if (!username || !email || !password) {
+                alert('Please fill in all fields');
+                return;
+            }
+
+            const user = {
+                id: 'user_' + Date.now(),
+                username,
+                email,
+                password,
+                joinDate: new Date().toISOString()
+            };
+
+            try {
+                const response = await fetch('https://imgelinker.vercel.app/register', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(user)
+                });
+
+                const data = await response.json();
+                
+                if (data.error) {
+                    alert(data.error);
+                    return;
+                }
+
+                localStorage.setItem('currentUser', JSON.stringify(user));
+                window.location.href = 'profile.html';
+            } catch (error) {
+                alert('Error connecting to server. Please try again.');
+            }
+        }
+
+        function toggleAuth() {
+            window.location.href = 'Rajan1.html';
+        }
+    </script>
+</body>
+</html> 

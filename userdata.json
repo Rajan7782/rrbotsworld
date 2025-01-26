@@ -1,0 +1,11 @@
+{
+  "users": [
+    {
+      "id": "user_1",
+      "username": "test",
+      "email": "test@example.com",
+      "password": "password123",
+      "joinDate": "2024-01-01T00:00:00.000Z"
+    }
+  ]
+} 
